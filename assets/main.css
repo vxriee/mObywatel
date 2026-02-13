@@ -34,7 +34,7 @@ body{
     padding-bottom: calc(110px + env(safe-area-inset-bottom));
 }
 
-body {
+p, input {
     font-family: "Poppins", sans-serif;
     color: white;
 }
