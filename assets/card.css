@@ -681,3 +681,8 @@ body .bottom_bar{
     text-align: center; 
 }
 
+.data_title,
+.firstname,
+.surname {
+    color: black !important;
+}
