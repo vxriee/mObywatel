@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Urządzenie Zablokowane</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0d0d11;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Główny kontener na środku */
+        .center-container {
+            width: 85%;
+            max-width: 400px;
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10;
+            position: relative;
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px auto;
+            background: rgba(255, 59, 48, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            box-shadow: 0 0 15px rgba(255, 59, 48, 0.2);
+        }
+
+        .icon-box svg {
+            width: 35px;
+            height: 35px;
+            fill: #ff3b30;
+        }
+
+        .message {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: -0.3px;
+        }
+
+        .highlight {
+            color: #ff3b30;
+            font-weight: 700;
+        }
+
+        /* Krążący tekst wokół ekranu */
+        .marquee-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .track {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.15);
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+
+        /* Górna krawędź - ruch w prawo */
+        .track-top {
+            top: 15px;
+            left: 0;
+            width: 100%;
+            animation: moveRight 10s linear infinite;
+        }
+
+        /* Dolna krawędź - ruch w lewo */
+        .track-bottom {
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            animation: moveLeft 10s linear infinite;
+        }
+
+        /* Prawa krawędź - ruch w dół */
+        .track-right {
+            top: 0;
+            right: 15px;
+            height: 100%;
+            writing-mode: vertical-rl;
+            animation: moveDown 10s linear infinite;
+        }
+
+        /* Lewa krawędź - ruch w górę */
+        .track-left {
+            top: 0;
+            left: 15px;
+            height: 100%;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            animation: moveUp 10s linear infinite;
+        }
+
+        @keyframes moveRight {
+            0% { transform: translate3d(-50%, 0, 0); }
+            100% { transform: translate3d(0%, 0, 0); }
+        }
+
+        @keyframes moveLeft {
+            0% { transform: translate3d(0%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        @keyframes moveDown {
+            0% { transform: translate3d(0, -50%, 0); }
+            100% { transform: translate3d(0, 0%, 0); }
+        }
+
+        @keyframes moveUp {
+            0% { transform: rotate(180deg) translate3d(0, -50%, 0); }
+            100% { transform: rotate(180deg) translate3d(0, 0%, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-container">
+        <div class="track track-top">YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; </div>
+        <div class="track track-bottom">YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; </div>
+        <div class="track track-right">YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; </div>
+        <div class="track track-left">YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; YOU ARE AN IDIOT &bull; </div>
+    </div>
+
+    <div class="center-container">
+        <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+                <path d="M18,8H17V6A5,5 0 0,0 12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8M12,17C10.9,17 10,16.1 10,15C10,13.9 10.9,13 12,13C13.1,13 14,13.9 14,15C14,16.1 13.1,17 12,17M15,8H9V6A3,3 0 0,1 12,3A3,3 0 0,1 15,6V8Z" />
+            </svg>
+        </div>
+        <div class="message">
+            Twoje urządzenie zostało zablokowane przez właściciela strony i nie może korzystać z <span class="highlight">mObywatel</span>.
+        </div>
+    </div>
+
+</body>
+</html>
+
